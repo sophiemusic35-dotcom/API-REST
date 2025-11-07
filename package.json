@@ -2,7 +2,7 @@
   "name": "api-rest",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "type": "module",
   "scripts": {
     "start": "node --watch app.js",
@@ -19,6 +19,11 @@
   },
   "homepage": "https://github.com/sophiemusic35-dotcom/API-REST#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "prisma": "^6.19.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.19.0"
   }
 }
