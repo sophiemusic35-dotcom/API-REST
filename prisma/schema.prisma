@@ -5,11 +5,30 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+}
+
+
+model Users {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  name      String?
+  tasks     Tasks[]
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Tasks {
+  id        Int     @id @default(autoincrement())
+  title     String
+  user      Users?  @relation(fields: [usersId], references: [id])
+  usersId   Int?
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 }
